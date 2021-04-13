@@ -10,7 +10,8 @@ import {
   overlaps,
   keyDown,
   keyPress,
-  action
+  action,
+  play
 } from '../engine.js';
 
 import explosion from './explosion.js';
@@ -32,6 +33,7 @@ function player() {
     const enemY = enemy.pos.y;
     destroy(laser);
     destroy(enemy);
+    play('enemyDeathSound');
 
     explosion(enemX, enemY);
   });
@@ -54,6 +56,7 @@ function player() {
 
   keyPress('space', () => {
     laser(ship.pos.x, ship.pos.y - 50);
+    play('laserSound');
   });
 
   action('laserMove', (laser) => {

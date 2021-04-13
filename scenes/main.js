@@ -1,7 +1,8 @@
 import {
   scene,
   gravity,
-  height
+  height,
+  play
 } from '../engine.js';
 
 import player from '../entities/player.js';
@@ -11,6 +12,7 @@ import background from '../entities/background.js';
 const mainScene = () => scene("main", () => {
 
   gravity(0);
+  play('bg-music', true);
 
   background(0, 0);
   background(0, -height());

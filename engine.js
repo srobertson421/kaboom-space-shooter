@@ -7,6 +7,7 @@ export const text = engine.text;
 export const pos = engine.pos;
 export const start = engine.start;
 export const loadSprite = engine.loadSprite;
+export const loadSound = engine.loadSound;
 export const sprite = engine.sprite;
 export const gravity = engine.gravity;
 export const body = engine.body;
@@ -22,5 +23,6 @@ export const overlaps = engine.overlaps;
 export const mouseClick = engine.mouseClick;
 export const go = engine.go;
 export const rand = engine.rand;
+export const play = engine.play;
 
 export default engine;

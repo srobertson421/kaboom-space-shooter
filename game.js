@@ -3,7 +3,8 @@ import mainScene from './scenes/main.js';
 import {
   init,
   start,
-  loadSprite
+  loadSprite,
+  loadSound
 } from './engine.js';
 
 // kaboom.debug.showArea = true;
@@ -22,6 +23,9 @@ loadSprite('explosion', '/assets/explosion.png', {
     explode: [0,15]
   }
 });
+loadSound('laserSound', '/assets/laser.ogg');
+loadSound('enemyDeathSound', '/assets/enemy-death.ogg');
+loadSound('bg-music', '/assets/bg-music.ogg');
 
 init({
   canvas: document.getElementById('game'),
