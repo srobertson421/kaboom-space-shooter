@@ -6,37 +6,28 @@ import {
   body,
   width,
   height,
-  destroy,
-  overlaps,
   keyDown,
   keyPress,
-  action,
-  play
+  play,
+  get
 } from '../engine.js';
 
-import explosion from './explosion.js';
-import laser from './laser.js';
+import { addLaser } from './laser.js';
 
 const SHIP_SPEED = 500;
-const LASER_SPEED = 800;
 
-function player() {
-  const ship = add([
+export function addPlayer() {
+  return add([
     sprite('ship'),
     origin('center'),
     pos(width() / 2, height() - 100),
-    body()
+    body(),
+    'player'
   ]);
+}
 
-  overlaps('laser', 'enemy', (laser, enemy) => {
-    const enemX = enemy.pos.x;
-    const enemY = enemy.pos.y;
-    destroy(laser);
-    destroy(enemy);
-    play('enemyDeathSound');
-
-    explosion(enemX, enemY);
-  });
+export function playerControls() {
+  const ship = get('player')[0];
 
   keyDown('left', () => {
     ship.move(-SHIP_SPEED, 0);
@@ -55,19 +46,7 @@ function player() {
   });
 
   keyPress('space', () => {
-    laser(ship.pos.x, ship.pos.y - 50);
+    addLaser(ship.pos.x, ship.pos.y - 50);
     play('laserSound');
   });
-
-  action('laserMove', (laser) => {
-    if(laser.pos.y <= 0) {
-      destroy(laser);
-    } else {
-      laser.move(0, -LASER_SPEED);
-    }
-  });
-
-  return ship;
 }
-
-export default player;

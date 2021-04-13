@@ -9,7 +9,7 @@ import {
   height
 } from '../engine.js';
 
-function enemy() {
+export function addEnemy() {
   const x = rand(50, width() - 50);
   const y = rand(50, height() - 300);
   const enemyType = rand(1, 4);
@@ -22,5 +22,3 @@ function enemy() {
     'enemy'
   ]);
 }
-
-export default enemy;

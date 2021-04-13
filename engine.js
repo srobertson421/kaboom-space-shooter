@@ -24,5 +24,6 @@ export const mouseClick = engine.mouseClick;
 export const go = engine.go;
 export const rand = engine.rand;
 export const play = engine.play;
+export const get = engine.get;
 
 export default engine;

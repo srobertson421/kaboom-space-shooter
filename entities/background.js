@@ -11,15 +11,17 @@ import {
 
 const BG_SCROLL_SPEED = 100;
 
-function background(x, y) {
-  const bg = add([
+export function addBackground(x, y) {
+  return add([
     sprite('bg'),
     scale(width() / 240, height() / 240),
 		origin("topleft"),
     pos(x, y),
     'bgScroll'
   ]);
+}
 
+export function backgroundActions() {
   action('bgScroll', (bg) => {
     if(bg.pos.y >= height()) {
       bg.pos.y = -height();
@@ -27,8 +29,4 @@ function background(x, y) {
       bg.move(0, BG_SCROLL_SPEED);
     }
   });
-
-  return bg;
 }
-
-export default background;

@@ -36,4 +36,4 @@ init({
 menuScene();
 mainScene();
 
-start('menu');
+start('main');

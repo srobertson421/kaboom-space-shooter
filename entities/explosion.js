@@ -7,7 +7,7 @@ import {
   destroy
 } from '../engine.js';
 
-function explosion(x, y) {
+export function addExplosion(x, y) {
   const explosion = add([
     sprite('explosion'),
     pos(x, y),
@@ -23,5 +23,3 @@ function explosion(x, y) {
 
   explosion.play('explode', false);
 }
-
-export default explosion;
