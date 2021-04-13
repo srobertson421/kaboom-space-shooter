@@ -29,11 +29,16 @@ export function laserCollisions() {
   overlaps('laser', 'enemy', (laser, enemy) => {
     const enemX = enemy.pos.x;
     const enemY = enemy.pos.y;
-    destroy(laser);
-    destroy(enemy);
-    play('enemyDeathSound');
 
-    addExplosion(enemX, enemY);
+    destroy(laser);
+
+    enemy.health -= 1;
+    if(enemy.health === 0) {
+      destroy(enemy);
+      play('enemyDeathSound');
+
+      addExplosion(enemX, enemY);
+    }
   });
 }
 

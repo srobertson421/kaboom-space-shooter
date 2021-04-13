@@ -19,6 +19,9 @@ export function addEnemy() {
     origin('center'),
     pos(x, y),
     body(),
-    'enemy'
+    'enemy',
+    {
+      health: Math.round(rand(1, 4))
+    }
   ]);
 }
