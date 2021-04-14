@@ -1,5 +1,4 @@
 import {
-  rand,
   sprite,
   pos,
   add,

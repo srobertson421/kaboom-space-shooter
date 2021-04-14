@@ -28,7 +28,7 @@ loadSound('enemyDeathSound', '/assets/enemy-death.ogg');
 loadSound('bg-music', '/assets/bg-music.ogg');
 
 init({
-  canvas: document.getElementById('game'),
+  // canvas: document.getElementById('game'),
   fullscreen: true,
 	scale: 0.5
 });
