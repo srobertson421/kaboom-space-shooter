@@ -13,22 +13,22 @@ import {
 
 const ENEMY1_SPEED = 400;
 
-export function addEnemy(enemyType) {
+export function addEnemy(enemyType, patternType) {
   let x;
   let y;
 
-  if(enemyType === 1) {
+  if(patternType === 1) {
     x = 0;
     y = 50;
-  } else if(enemyType === 2) {
+  } else if(patternType === 2) {
     x = width();
     y = height() - 100;
-  } else if(enemyType === 3) {
-    x = rand(50, width() - 50);
-    y = rand(50, height() - 300);
+  } else if(patternType === 3) {
+    x = width();
+    y = 150;
   } else {
-    x = rand(50, width() - 50);
-    y = rand(50, height() - 300);
+    x = 0;
+    y = height() / 2 + 100;
   }
 
   return add([
@@ -38,6 +38,7 @@ export function addEnemy(enemyType) {
     body(),
     'enemy',
     `enemyType${enemyType}`,
+    `patternType${patternType}`,
     {
       health: enemyType,
       type: enemyType
@@ -60,8 +61,8 @@ export function enemyActions() {
     }
   });
 
-  // Enemy type 1 movement
-  action('enemyType1', enemy => {
+  // Pattern type 1 movement
+  action('patternType1', enemy => {
     if(enemy.pos.x < width() / 2) {
       if(enemy.pos.y < height() / 2) {
         // Top left
@@ -81,8 +82,8 @@ export function enemyActions() {
     }
   });
 
-  // Enemy type 2 movement
-  action('enemyType2', enemy => {
+  // Pattern type 2 movement
+  action('patternType2', enemy => {
     if(enemy.pos.x < width() / 2) {
       if(enemy.pos.y < height() / 2) {
         // Top left
@@ -100,5 +101,31 @@ export function enemyActions() {
         enemy.move(-ENEMY1_SPEED, -ENEMY1_SPEED / 2);
       }
     }
+  });
+
+  // Pattern type 3 movement
+  action('patternType3', enemy => {
+    if(enemy.pos.x < width() / 2) {
+      if(enemy.pos.y < height() / 2) {
+        // Top left
+        enemy.move(0, ENEMY1_SPEED);
+      } else {
+        // Bottom left
+        enemy.move(-ENEMY1_SPEED, 0);
+      }
+    } else {
+      if(enemy.pos.y < height() / 2) {
+        // Top right
+        enemy.move(-ENEMY1_SPEED, 0);
+      } else {
+        // Bottom right
+        enemy.move(ENEMY1_SPEED, 0);
+      }
+    }
+  });
+
+  // Pattern type 4 movement
+  action('patternType4', enemy => {
+    enemy.move(ENEMY1_SPEED, 0);
   });
 }

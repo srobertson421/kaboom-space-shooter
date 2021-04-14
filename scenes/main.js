@@ -37,9 +37,10 @@ const mainScene = () => scene("main", () => {
   addPlayer();
 
   loop(5.5, () => {
-    const enemyType = Math.round(rand(1, 2));
+    const enemyType = Math.round(rand(1, 4));
+    const patternType = Math.round(rand(1, 4));
     for(let i = 0; i < 6; i++) {
-      wait(i + 0.5, () => addEnemy(enemyType));
+      wait(i + 0.5, () => addEnemy(enemyType, patternType));
     }
   });
 
