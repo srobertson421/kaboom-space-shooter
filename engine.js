@@ -25,5 +25,7 @@ export const go = engine.go;
 export const rand = engine.rand;
 export const play = engine.play;
 export const get = engine.get;
+export const wait = engine.wait;
+export const loop = engine.loop;
 
 export default engine;

@@ -7,7 +7,8 @@ import {
   action,
   destroy,
   overlaps,
-  play
+  play,
+  get
 } from '../engine.js'
 
 import { addExplosion } from './explosion.js';
@@ -38,6 +39,8 @@ export function laserCollisions() {
       play('enemyDeathSound');
 
       addExplosion(enemX, enemY);
+
+      get('score')[0].trigger('increaseScore', enemy.type);
     }
   });
 }
